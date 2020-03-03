@@ -1,0 +1,214 @@
+* { padding: 0; margin: 0; }
+		p {
+			font-family: sans-serif;
+		}
+		header {
+			top :0;
+			position: -webkit-sticky;
+			position: sticky;
+			z-index: 9;
+		}
+		.nonresponsive {
+			text-align:center;
+			width:100%;
+		}
+
+		a {
+			text-decoration: none;
+			color:white;
+		}
+
+		.nonresponsive a {
+			text-decoration: none;
+			color:white;
+			padding:10px;
+			margin-right: 20px; 
+			margin-left: 20px;
+			margin-top: 5px;
+			margin-bottom: 5px;
+			display:inline-block;
+		}
+
+		.left-button {
+			cursor: pointer;
+  			position: absolute;
+  			top: 40%;
+  			right: 88%;
+			background-color: #555;
+		  	color: white;
+		  	font-size: 16px;
+		  	padding: 12px 24px;
+		  	cursor: pointer;
+		  	border-radius: 5px;
+		  	opacity: 0.5;
+		}
+
+		.right-button {
+			cursor: pointer;
+  			position: absolute;
+  			top: 40%;
+  			left: 88%;
+		  	background-color: #555;
+		  	color:white;
+		  	font-size: 16px;
+		  	padding: 12px 24px;
+		  	cursor: pointer;
+		  	border-radius: 5px;
+		  	opacity: 0.5;
+
+		}
+
+
+		a:hover {
+			background-color: #ddd;
+  			color: black;
+		}
+
+		nav {
+			background-color: black;
+		}
+
+		.responsive {display: none;}
+		
+		@media screen and (max-width: 915px) {
+			.nonresponsive {display: none;}
+			.responsive { 
+				display: inline-block; 
+				width: 100%;
+				}
+
+			.main_name { 
+				float:left; 			
+				margin-left: 50px;
+				margin-top: 20px;
+				margin-bottom: 20px; 
+			}
+			li {
+				margin:10px;
+			}
+			.text-on {
+				display: block;
+				margin-top:60px;
+				margin-right: 40px;
+				text-align:right;
+			}
+			.text-off {
+				display: none;
+			}
+			.menu { 
+				float:right;
+				margin-right: 50px;
+				margin-top: 20px;
+				margin-bottom: 20px;
+			}
+			.responsive a {
+				text-decoration: none;
+				color:white;
+				padding:10px;
+				margin-right: 20px; 
+				margin-left: 20px;
+				margin-top: 5px;
+				margin-bottom: 5px;
+			}
+			.left-button {
+				position: absolute;
+	  			top: 40%;
+	  			right: 80%;
+				}
+
+			.right-button {
+			  	position: absolute;
+	  			top: 40%;
+	  			left: 80%;
+			}
+		}
+		
+		@media screen and (max-width: 215px) {
+			.main_name { 
+				float:left; 			
+				margin-left:0;
+			}
+			.text-on {
+				display: block;
+				margin-top:60px;
+				margin-right:0px;
+				text-align:right;
+			}
+			.responsive a {
+				text-decoration: none;
+				color:white;
+				padding:0px;
+				margin-right: 0px; 
+				margin-left: 0px;
+				margin-top: 5px;
+				margin-bottom: 5px;
+			}
+		}
+
+		.left {
+			float:left;
+			margin-left: 50px;
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+		
+		.right {
+			float:right;
+			margin-right: 50px;
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+		
+		.center {
+			display: inline-block;
+			margin-top: 10px;
+			margin-right: 100px;
+			margin-bottom: 10px;
+		}
+		
+		main {
+			width: 75%;
+   			margin: auto;
+			z-index: 8;
+			color: white;
+			padding:25px;
+		}
+		
+		.img-container {
+			padding: 40px 10px 40px 10px;
+			background-color: #1e1e1e;
+			margin: auto;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.carousel {
+			text-align: center;
+			padding:10px;
+			margin:10px;
+			background-color: black;
+		}
+
+		.images {
+			display: table;
+			margin: 0px auto;
+		}
+
+		.images img{
+			max-width: 400px;
+			width: 100%;
+			height: auto;
+		}
+
+		@media screen and (max-width: 1340px) {
+			.simg {display: none;}
+		}
+		
+		@media screen and (max-width: 915px) {
+			.simg, .timg {display: none;}
+		}
+
+
+		.main-container {
+			background-color: black;
+		}
