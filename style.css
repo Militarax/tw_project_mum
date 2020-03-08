@@ -62,7 +62,7 @@
 
 		a:hover {
 			background-color: rgb(63, 63, 63);
-  			color: black;
+  		
 		}
 
 		nav {
@@ -223,6 +223,7 @@
 		
 	}
 	.music-section-top{
+		display: grid;
 		position: relative;
 		overflow: auto;
 		margin: 50px;
@@ -244,8 +245,7 @@ height: 200px;
 		color:white;
 		margin: 50px;
 		background-size: cover;
-		
-
+		opacity: .7;
 
 	}
 
@@ -257,4 +257,18 @@ height: 200px;
 		text-align: center;
 		padding-bottom: 10px;
 	}
+
+	.music-tag-link{
+		color: white;
+		position: relative;
+		text-align: center;
+		font-size: 25px;
+		line-height: 22px;
+		margin-top: 82px;
+		opacity: 1.0;
+
+	}
+
+
+
 	
