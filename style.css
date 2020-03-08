@@ -43,6 +43,7 @@
 		  	opacity: 0.5;
 		}
 
+		
 		.right-button {
 			cursor: pointer;
   			position: absolute;
@@ -60,7 +61,7 @@
 
 
 		a:hover {
-			background-color: #ddd;
+			background-color: rgb(63, 63, 63);
   			color: black;
 		}
 
@@ -211,4 +212,49 @@
 
 		.main-container {
 			background-color: black;
+			overflow: auto;
+			
 		}
+		
+
+	.music-section-type{
+		margin: 50px;
+		overflow: auto;
+		
+	}
+	.music-section-top{
+		position: relative;
+		overflow: auto;
+		margin: 50px;
+	}
+
+	.music-tags{
+	
+	   width: 100%;
+	   margin: 0 auto;
+		
+		
+	}
+	.music-tag{
+		float: left;
+height: 200px;
+		width: 200px;
+		overflow:auto;
+		background-color: rgb(63, 63, 63);
+		color:white;
+		margin: 50px;
+		background-size: cover;
+		
+
+
+	}
+
+	.music-section-title{
+		color: white;
+		font-size: 18px;
+		line-height: 24px;
+		position: relative;
+		text-align: center;
+		padding-bottom: 10px;
+	}
+	
