@@ -1,17 +1,23 @@
-* { padding: 0; margin: 0; }
-		p {
-			font-family: sans-serif;
-		}
-		header {
-			top :0;
-			position: -webkit-sticky;
-			position: sticky;
-			z-index: 9;
-		}
-		.nonresponsive {
-			text-align:center;
-			width:100%;
-		}
+
+* { padding: 0; margin: 0;
+	font-family: sans-serif;
+}
+
+body {
+	background-color: #1e1e1e;
+}
+
+header {
+	top :0;
+	position: -webkit-sticky;
+	position: sticky;
+	z-index: 9;
+}
+
+.nonresponsive {
+	text-align:center;
+	width:100%;
+}
 
 		a {
 			text-decoration: none;
@@ -41,10 +47,9 @@
 		  	cursor: pointer;
 		  	border-radius: 5px;
 		  	opacity: 0.5;
+			  outline: none;
 		}
-		
 
-		
 		.right-button {
 			cursor: pointer;
   			position: absolute;
@@ -57,13 +62,13 @@
 		  	cursor: pointer;
 		  	border-radius: 5px;
 		  	opacity: 0.5;
+		  	  outline: none;
 
 		}
 
-
 		a:hover {
-			background-color: rgb(63, 63, 63);
-  		
+			background-color: #ddd;
+  			color: black;
 		}
 
 		nav {
@@ -72,8 +77,251 @@
 
 		.responsive {display: none;}
 		
+
+	
+		.left {
+			float:left;
+			margin-left: 50px;
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+		
+		.right {
+			float:right;
+			margin-right: 50px;
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+		
+		.center {
+			display: inline-block;
+			margin-top: 10px;
+			margin-left: 80px;
+			margin-right: 80px;
+			margin-bottom: 10px;
+		}
+		
+		main {
+			width: 75%;
+   			margin: auto;
+			z-index: 8;
+			color: white;
+			padding:25px;
+		}
+		
+		.img-container {
+			padding: 40px 10px 40px 10px;
+			margin: auto;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.carousel {
+			text-align: center;
+			padding:10px;
+			margin-top:10px;
+			margin-bottom: 10px;
+			margin-left:25px;
+			margin-right: 25px;
+			padding-top:20px;
+			padding-bottom: 20px;
+			background-color: black;
+			position:relative;
+		}
+
+		.images {
+			display: table;
+			margin: 0px auto;
+		}
+
+		.images img{
+			width: 400px;
+		}
+
+		
+
+		.main-container {
+			background-color: black;
+		}
+
+
+		footer {
+			position:sticky;
+			bottom:0;
+			left:0;
+			background-color: #1e1e1e;
+		}
+
+
+		.player-part {
+			width: 100%;
+			position:relative;
+			text-align: center;
+		}
+
+ 		 #progressbar {
+	      background-color: black;
+	      border-radius: 12px;
+	      height: 5px;
+	      padding: 3px;
+	    }
+	    
+    	#progressbar div{
+	       background-color: white;
+	       width: 40%; 
+	       height: 100%;
+	       border-radius: 10px;
+	    }
+
+		#progressbar:hover{
+			height: 20px;
+			transition: 0.3s;
+		}
+		.buttons button {
+			margin-left:15px;
+			margin-right: 15px;
+			margin-top:10px;
+			width: 40px;
+			height: 40px;
+			cursor: pointer;
+			border:0;	
+		}
+
+		.little-player {
+			width: 40px;
+			height: 40px;
+			cursor: pointer;
+			border-radius: 50%;
+			outline:none;
+		}
+
+		#prev {
+			background-image: url("https://i3.ru-music.com/i/img/fixplayer.png");
+			background-position: -8px 0px;
+			background-size: 250px 100px;
+			background-color: #1e1e1e;
+			outline-color:white;
+		}
+
+		#next {
+			background-image: url("https://i3.ru-music.com/i/img/fixplayer.png");
+			background-position: -192px 0;
+			background-size: 250px 100px;
+			background-color: #1e1e1e;
+			outline-color:white;
+		}
+
+		#play {
+			background-image: url("https://i3.ru-music.com/i/img/fixplayer.png");
+			background-position: -70px -1px;
+			background-size: 250px 100px;
+			background-color: #1e1e1e;
+			outline-color:white;
+		}
+		
+		#pause {
+			background-image: url("https://i3.ru-music.com/i/img/fixplayer.png");
+			background-position: -131px 0px;
+			background-size: 250px 100px;
+			background-color: #1e1e1e;
+			outline-color:white;
+		}
+
+		.player-main-part {
+			margin-top:10px;
+		}
+
+		.container-player-text {
+			padding-left:50px;
+			padding-right:50px;
+			padding-top:10px;
+			margin:0px 20px 0px 20px;
+		}
+
+		.player-text {
+			margin-left:450px;
+			margin-right:450px;
+			height: 20px;
+		}
+		
+		
+		@media screen and (max-width: 1350px) {
+				.player-text {
+				margin-left:250px;
+				margin-right:250px;
+			}
+		}
+
+		@media screen and (max-width: 1000px) {
+				.player-text {
+				margin-left:50px;
+				margin-right:50px;
+			}
+		}
+
+
+		.main-player {
+			height: 90px;
+			background-color: #1e1e1e;
+			margin-top:20px;
+			margin-bottom: 20px;
+			position:relative;
+			border:1px;
+			border-color:black;
+			border-style: solid;
+		}
+
+		.main-player:hover {
+			border:1px;
+			border-color:white;
+			border-style: solid;
+		}
+
+		.album-image {
+			background-image: url("encore.png");
+			background-size: cover;
+			width: 90px;
+			height: 90px;
+			float:left;
+		}
+		
+		.album-image:hover > button{
+			opacity: 1;
+			transition: 0.5s;
+		}
+
+		.main-player button {
+			position: relative;
+			top:30%;
+			left:25%;
+			opacity: 0.2;
+		}
+
+		.track-link {
+			position:relative;
+			text-align: center;
+			width: 50%;
+			top:50%;
+			margin:auto;
+		}
+
+		@media screen and (max-width: 1340px) {
+			.timg {display: none;}
+		}
+		
 		@media screen and (max-width: 915px) {
+			.simg, .timg {display: none;}
+			.fimg {
+				max-width: 400px;
+				height: auto;
+				}
+
+			.images img{
+				width: 100%;
+			}
+
 			.nonresponsive {display: none;}
+			
 			.responsive { 
 				display: inline-block; 
 				width: 100%;
@@ -94,15 +342,18 @@
 				margin-right: 40px;
 				text-align:right;
 			}
+
 			.text-off {
 				display: none;
 			}
+
 			.menu { 
 				float:right;
 				margin-right: 50px;
 				margin-top: 20px;
 				margin-bottom: 20px;
 			}
+
 			.responsive a {
 				text-decoration: none;
 				color:white;
@@ -116,15 +367,35 @@
 				position: absolute;
 	  			top: 40%;
 	  			right: 80%;
+	  			max-width: 80px;
+	  			height: auto;
 				}
 
 			.right-button {
 			  	position: absolute;
 	  			top: 40%;
 	  			left: 80%;
+	  			max-width: 80px;
+	  			height: auto;
 			}
 		}
-		
+			
+
+		@media screen and (max-width: 340px) {
+			#menu{
+				margin-left:10px;
+				}
+			.menu {
+				margin-right:10px;
+			}
+			.responsive li a {
+				margin-right:0px;
+			}
+			.responsive li {
+				margin-right: 0px;
+			}
+		}
+
 		@media screen and (max-width: 215px) {
 			.main_name { 
 				float:left; 			
@@ -146,165 +417,3 @@
 				margin-bottom: 5px;
 			}
 		}
-
-		.left {
-			float:left;
-			margin-left: 50px;
-			margin-top: 10px;
-			margin-bottom: 10px;
-		}
-		
-		.right {
-			float:right;
-			margin-right: 50px;
-			margin-top: 10px;
-			margin-bottom: 10px;
-		}
-		
-		.center {
-			display: inline-block;
-			margin-top: 10px;
-			margin-right: 100px;
-			margin-bottom: 10px;
-		}
-		
-		main {
-			width: 75%;
-   			margin: auto;
-			z-index: 8;
-			color: white;
-			padding:25px;
-		}
-		
-		.img-container {
-			padding: 40px 10px 40px 10px;
-			background-color: #1e1e1e;
-			margin: auto;
-			position: relative;
-			overflow: hidden;
-		}
-
-		.carousel {
-			text-align: center;
-			padding:10px;
-			margin:10px;
-			background-color: black;
-		}
-
-		.images {
-			display: table;
-			margin: 0px auto;
-		}
-
-		.images img{
-			max-width: 400px;
-			width: 100%;
-			height: auto;
-		}
-
-		@media screen and (max-width: 1340px) {
-			.simg {display: none;}
-		}
-		
-		@media screen and (max-width: 915px) {
-			.simg, .timg {display: none;}
-		}
-
-
-		.main-container {
-			background-color: black;
-			overflow: auto;
-			
-		}
-		
-
-	.music-section-type{
-		margin: 50px;
-		overflow: auto;
-		
-	}
-	.music-section-top{
-		position: relative;
-		overflow: auto;
-		margin: 50px;
-	}
-
-	.music-tags{
-	
-	   width: 100%;
-	   margin: 0 auto;
-		
-		
-	}
-	.music-tag{
-		float: left;
-height: 200px;
-		width: 200px;
-		overflow:auto;
-		background-color: rgb(63, 63, 63);
-		color:white;
-		margin: 50px;
-		background-size: cover;
-		opacity: .7;
-
-	}
-
-	.music-section-title{
-		color: white;
-		font-size: 18px;
-		line-height: 24px;
-		position: relative;
-		text-align: center;
-		padding-bottom: 10px;
-	}
-
-	.music-tag-link{
-		color: white;
-		position: relative;
-		text-align: center;
-		font-size: 25px;
-		line-height: 22px;
-		margin-top: 82px;
-		opacity: 1.0;
-
-	}
-
-	.music-enum1{
-		
-		display: table;
-		margin-left: auto;
-		margin-right: auto;
-		margin: 100px;
-		position: relative;
-		overflow: hidden;
-		float: right;
-		height: auto;
-		width: auto;
-		min-width: 300px;
-		min-height: 300px;
-		background-color: greenyellow;
-	}
-
-	.music-enum2{
-		
-		display: table;
-		margin-left: auto;
-		margin-right: auto;
-		margin: 100px;
-		position: relative;
-		overflow: hidden;
-		float: left;
-		height: auto;
-		width: auto;
-		min-width: 300px;
-		min-height: 300px;
-		background-color: greenyellow;
-	}
-
-	.music-section-top{
-		align-items: center;
-	}
-
-
-
-	
