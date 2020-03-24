@@ -43,3 +43,11 @@
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
 }
+
+
+@media screen and (max-width: 775px) {
+    .form {
+      width: 300px; 
+      margin-top:50px;
+  }
+}
