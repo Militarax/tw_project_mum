@@ -47,26 +47,84 @@
 			<ul style="list-style-type: none">
 				<li>
 					<div class="main-player">
-						<div class="album-image"><button class="little-player play"></button></div>
-						<div class="track-link"><a href="eminem.html">Eminem - some Track</a></div>
-						<div class="add"><button class="add-button"></button></div>
-						<div class="minus"><button class="minus-button"></button></div>
+					<div class="album-image">
+						<button id="mini-play1" onclick="play('1')" class="little-player play on"></button>
+						<button id="mini-pause1" onclick="pause('1')" class="little-player pause off"></button>
 					</div>
+					<div class="track-link"><a href="#">Author - Track</a></div>
+					<div class="add"><button onclick="mini_menu('1')" class="add-button"></button></div>
+					<div id="mini-menu1" class="mini-menu">
+							<button>Add</button>
+							<button>Remove</button>
+							<button>Vote</button>
+					</div>
+				</div>
 				</li>
 				<li>
 					<div class="main-player">
-						<div class="album-image"><button class="little-player play"></button></div>
-						<div class="track-link"><a href="#">Author - Track</a></div>
-						<div class="add"><button class="add-button"></button></div>
-						<div class="minus"><button class="minus-button"></button></div>
+					<div class="album-image">
+						<button id="mini-play2" onclick="play('2')" class="little-player play on"></button>
+						<button id="mini-pause2" onclick="pause('2')" class="little-player pause off"></button>
 					</div>
+					<div class="track-link"><a href="#">Author - Track</a></div>
+					<div class="add"><button onclick="mini_menu('2')" class="add-button"></button></div>
+					<div id="mini-menu2" class="mini-menu">
+							<button>Add</button>
+							<button>Remove</button>
+							<button>Vote</button>
+					</div>
+				</div>
 				</li>			
 				<li>
+<div class="main-player">
+					<div class="album-image">
+						<button id="mini-play3" onclick="play('3')" class="little-player play on"></button>
+						<button id="mini-pause3" onclick="pause('3')" class="little-player pause off"></button>
+					</div>
+					<div class="track-link"><a href="#">Author - Track</a></div>
+					<div class="add"><button onclick="mini_menu('3')" class="add-button"></button></div>
+					<div id="mini-menu3" class="mini-menu">
+							<button>Add</button>
+							<button>Remove</button>
+							<button>Vote</button>
+					</div>
+				</div>
+				</li>
+				<li>
+					<div class="main-player">
+					<div class="album-image">
+						<button id="mini-play4" onclick="play('4')" class="little-player play on"></button>
+						<button id="mini-pause4" onclick="pause('4')" class="little-player pause off"></button>
+					</div>
+					<div class="track-link"><a href="#">Author - Track</a></div>
+					<div class="add"><button onclick="mini_menu('4')" class="add-button"></button></div>
+					<div id="mini-menu4" class="mini-menu">
+							<button>Add</button>
+							<button>Remove</button>
+							<button>Vote</button>
+					</div>
+				</div>
+				</li>
+				<li>
+<div class="main-player">
+					<div class="album-image">
+						<button id="mini-play5" onclick="play('5')" class="little-player play on"></button>
+						<button id="mini-pause5" onclick="pause('5')" class="little-player pause off"></button>
+					</div>
+					<div class="track-link"><a href="#">Author - Track</a></div>
+					<div class="add"><button onclick="mini_menu('5')" class="add-button"></button></div>
+					<div id="mini-menu5" class="mini-menu">
+							<button>Add</button>
+							<button>Remove</button>
+							<button>Vote</button>
+					</div>
+				</div>
+				</li>
+				<li>
 					<div class="main-player">
 						<div class="album-image"><button class="little-player play"></button></div>
 						<div class="track-link"><a href="#">Author - Track</a></div>
 						<div class="add"><button class="add-button"></button></div>
-						<div class="minus"><button class="minus-button"></button></div>
 					</div>
 				</li>
 				<li>
@@ -74,7 +132,6 @@
 						<div class="album-image"><button class="little-player play"></button></div>
 						<div class="track-link"><a href="#">Author - Track</a></div>
 						<div class="add"><button class="add-button"></button></div>
-						<div class="minus"><button class="minus-button"></button></div>
 					</div>
 				</li>
 				<li>
@@ -82,31 +139,6 @@
 						<div class="album-image"><button class="little-player play"></button></div>
 						<div class="track-link"><a href="#">Author - Track</a></div>
 						<div class="add"><button class="add-button"></button></div>
-						<div class="minus"><button class="minus-button"></button></div>
-					</div>
-				</li>
-				<li>
-					<div class="main-player">
-						<div class="album-image"><button class="little-player play"></button></div>
-						<div class="track-link"><a href="#">Author - Track</a></div>
-						<div class="add"><button class="add-button"></button></div>
-						<div class="minus"><button class="minus-button"></button></div>
-					</div>
-				</li>
-				<li>
-					<div class="main-player">
-						<div class="album-image"><button class="little-player play"></button></div>
-						<div class="track-link"><a href="#">Author - Track</a></div>
-						<div class="add"><button class="add-button"></button></div>
-						<div class="minus"><button class="minus-button"></button></div>
-					</div>
-				</li>
-				<li>
-					<div class="main-player">
-						<div class="album-image"><button class="little-player play"></button></div>
-						<div class="track-link"><a href="#">Author - Track</a></div>
-						<div class="add"><button class="add-button"></button></div>
-						<div class="minus"><button class="minus-button"></button></div>
 					</div>
 				</li>
 
@@ -131,9 +163,10 @@
 					</div>
 				</div>
 				<div class="buttons">
-					<button class="prev"></button>
-					<button class="play"></button>
-					<button class="next"></button>
+					<button id="prev" class="prev"></button>
+					<button id="play"  onclick="play()" class="play on"></button>
+					<button id="pause" onclick="pause()" class="pause off"></button>
+					<button id="next" class="next"></button>
 				</div>
 	   		</div>
 		</div>

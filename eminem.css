@@ -1,0 +1,201 @@
+.main-player {
+	width: 100px;
+	height: 50px;
+}
+.main-container {
+	padding: 10px;
+	background-color: #1e1e1e;
+}
+
+
+.grid-container {
+
+	grid-gap: 10px;
+	background-color: black;
+	color:white;
+	display:grid;
+ 	 grid-template-areas:
+    'left right right';
+}
+
+.bio h1 {
+	padding-bottom: 10px;
+	padding-top:10px;
+
+}
+
+.bio {
+	grid-area: right; 
+	overflow: auto;
+	width:auto;
+	height:500px;
+}
+
+.portret {
+	grid-area: left; 
+	text-align: center;
+	padding:10px;
+	border: 1px solid;
+}
+.portret img {
+	width: 300px;
+}
+#img img{
+	margin:auto;
+}
+
+.album-image {
+	height: 50px;
+	width: 50px;
+}
+
+.main-player {
+	width: 300px;
+	margin-top:5px;
+	margin-bottom: 5px;
+	margin:auto;
+}
+
+.little-player {
+	position: relative;
+	top:15%;
+	left:1%;
+	opacity: 0.2;
+	width: 70%;
+	height: 70%;
+}
+
+
+.main-player .play {
+	background-position: -73px -5px;
+	background-size: 250px 100px;
+	background-color: #1e1e1e;
+	outline-color:white;
+}
+
+.main-player .pause  {
+	background-position: -136px -4px;
+}
+.comment-container {
+	clear:both;
+	margin:50px;
+	padding:20px;
+	background-color: black;
+}
+
+.comm-and-input {
+	width:100%;
+}
+
+.comm-and-input form{
+	border: 1px solid #ccc;
+	padding: 10px;
+	background-color: #1e1e1e;
+}
+
+textarea{
+	width: 100%;
+	height: 50px;
+	border: 0px;
+	resize: vertical;
+}
+
+form div {
+	text-align:right;
+}
+
+form button {
+	background-color: black;
+	color:white;
+	margin-top:10px;
+	padding:10px;
+	padding-right:30px;
+	padding-left: 30px;
+}
+
+.comm-and-input ul{
+	margin-top:20px;
+	list-style-type: none;
+	color:white;
+}
+
+.comm-and-input li {
+	margin:20px;
+	background-color: #1e1e1e;
+	border: 1px solid #ccc;
+}
+
+p {
+	margin:5px;
+}
+.comment div {
+	margin:5px;
+}
+
+.more_comm {
+	margin-right:25px;
+	text-align: right;
+}
+
+.more_comm a {
+	cursor: pointer;
+	padding:10px;
+	border:1px solid white;
+}
+.add {
+	position:relative;
+	text-align: center;
+	width: 50%;
+	top:-25%;
+	left:40%;
+	margin:auto;
+	width: 100px;
+}
+
+.add-button {
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+	border-radius: 50%;
+	outline:none;
+	opacity: 1;
+}
+.mini-menu {
+	left:101%;
+}
+
+@media screen and (max-width:640px) {
+	.portret img {
+		width: 150px;
+	}
+	.main-player {
+		width: 180px;
+	}
+	.track-link {
+		z-index:10;
+		margin:0;
+		top:-80%;
+		left:30%;
+	}
+	.add {
+		top:-115%;
+		left:41%;
+	}
+	.add-button {
+		width: 30px;
+		height: 30px;
+		background-position: -7px 1px;
+		background-size: 40px;
+	}
+}
+@media screen and (max-width:550px) {
+	.track-link {
+		display:none;
+	}
+	.add {
+		width: 25px;
+		height: 25px;
+		top:25%;
+		left:25%;
+	}
+}
