@@ -22,7 +22,16 @@ a {
 	text-decoration: none;
 	color:white;
 }
+.more_comm {
+	margin-right:25px;
+	text-align: right;
+}
 
+.more_comm a {
+	cursor: pointer;
+	padding:10px;
+	border:1px solid white;
+}
 .nonresponsive a {
 	text-decoration: none;
 	color:white;
@@ -340,7 +349,7 @@ footer {
     100% { transform: translate(-100%, 0); }
 }
 
-.add {
+.add-vote-div {
 	position:relative;
 	text-align: center;
 	top:10%;
@@ -440,7 +449,7 @@ footer {
 		display: none;
 	}
 
-	.add {
+	.add-vote-div {
 		top:10%;
 		left:40%;
 	}
@@ -516,7 +525,7 @@ footer {
 	.track-link{
 		display: none;
 	}
-	.add {
+	.add-vote-div {
 		top:30%;
 		left: 20%;
 	}

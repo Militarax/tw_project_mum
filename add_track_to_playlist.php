@@ -1,8 +1,8 @@
 <?php
+	include 'connection.php';
 	session_start();
 	if(isset($_SESSION['email']) && isset($_POST['title_track'])) {
-		$user ='root';
-		$db = new mysqli('localhost', $user, '', 'mydb') or die('Unable to connect'); 
+		$db = mysqli_connect($host, $user, $password, $database) or die("Error" . mysqli_error($db));
 		
 		$user_id = $_SESSION['id'];
 		$stmt = $db->prepare('SELECT * from `track` where `title_track` = ?');

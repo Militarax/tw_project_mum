@@ -2,18 +2,26 @@ let track = document.getElementById("music0");
 let playing = false;
 let playing_now = 0;
 let prev_play = -1;
-var number_of_tracks = 10;
+var number_of_tracks = 20;
+
 
 setInterval(updateProgressValue, 1);
 
 function play(number) {
 	
+	for(i = 0; i < 20; i++)
+		if(document.getElementById("mini-play" + i.toString()) == null) {			
+			number_of_tracks = i;
+			console.log(number_of_tracks);
+			break;
+		}
+
 	if (playing) { 
 		for (i = 0; i < number_of_tracks; i++) {
 			pause(i.toString());
 		}		
 	}
-
+	console.log(number);
 	document.getElementById("main_player_name_track").textContent = document.getElementById("player_name_track" + number).textContent;
 	playing_now = parseInt(number);
 	playing = true;
@@ -76,7 +84,7 @@ function next() {
 	else
 		pause(playing_now);
 }
-var i = 0;
+
 function updateProgressValue() {
 	var bar = document.getElementById("bar");
 	if (track != null)

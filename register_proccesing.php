@@ -1,12 +1,15 @@
 <?php
-function validate($str) {
-	return (strpos($str, " ") + strpos($str, "\n") + strpos($str,"\t") + strpos($str, "\r"));
-}
+	include 'connection.php';
+	
+	function validate($str) {
+		return (strpos($str, " ") + strpos($str, "\n") + strpos($str,"\t") + strpos($str, "\r"));
+	}
+	
+
 	$email = $_POST['email'];
 	$password = trim($_POST['password']);
 	$password2 = trim($_POST['password2']);
-	$user ='root';
-	$db = new mysqli('localhost', $user, '', 'mydb') or die('Unable to connect'); 
+	$db = mysqli_connect($host, $user, $password, $database) or die("Error" . mysqli_error($db));
 	$exists = null;
 
 	if(strcmp($password, $password2) == 0) {

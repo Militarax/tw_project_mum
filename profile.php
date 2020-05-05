@@ -1,7 +1,7 @@
 <?php 	
 	session_start();
-	$user ='root';
-	$db = new mysqli('localhost', $user, '', 'mydb') or die('Unable to connect');
+	include 'connection.php';
+	$db = mysqli_connect($host, $user, $password, $database) or die("Error" . mysqli_error($db));
 	if(!isset($_SESSION['email']))
 		header('Location: /tw/login.php');
 	$_SESSION['last_page'] = "profile.php";
@@ -20,6 +20,7 @@
 	<script src="js/player.js">
 	</script>
 	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+	<script src="js/file.js"></script>
 </head>
 <body>
 	<header>
@@ -81,11 +82,11 @@
 				<button id="mini-pause'.$i.'" onclick="pause('.$i.')" class="little-player pause off"></button>
 			</div>
 			<div class="track-link">
-				<p class="marquee resp"><span><a href="eminem.php?name='.$row["name"].'" id = "player_name_track'.$i.'">'.$row["name"].' - '.$row["title_track"].'</a></span></p>
+				<p class="marquee resp"><span><a href="artist.php?name='.$row["name"].'" id = "player_name_track'.$i.'">'.$row["name"].' - '.$row["title_track"].'</a></span></p>
 			</div>';
 
 		if(isset($_SESSION['email'])) {
-			echo '<div class="add"><button onclick="mini_menu('.$i.')" class="add-button"></button></div>
+			echo '<div class="add-vote-div"><button onclick="mini_menu('.$i.')" class="add-button"></button></div>
 				<div id="mini-menu'.$i.'" class="mini-menu">
 					<ul style="list-style-type: none">';
 
@@ -109,7 +110,12 @@
 		</div>
 	</main>
 </div>
-<div class="export"><h3><a>Export playlist</a></h3></div>
+<div class="export"><h3><a>Import playlist</a></h3>
+	<input type="file" accept="application/JSON" id="fileToLoad">
+	<button onclick="loadFileAsText()">Load Selected File</button>
+</div>
+<div class="export"><h3><a id="export_a" onclick="get_file()">Export playlist</a></h3>
+</div>
 </div>
 	<?php
 		echo file_get_contents("resources/player.html"); 

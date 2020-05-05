@@ -1,7 +1,12 @@
 <?php 	
+	include 'carousel.php';
 	session_start();
-	$user ='root';
-	$db = new mysqli('localhost', $user, '', 'mydb') or die('Unable to connect'); 
+	include 'print_tracks.php';
+	$_SESSION['prev_page'] = "artist.php";
+	if (!isset($_GET['page']))
+		$page = 1;
+	else
+		$page = $_GET['page'];
  ?>
 <!DOCTYPE html>
 <html lang="en-us">
@@ -42,7 +47,7 @@
 			</div>
 		</div>
 		<div class="responsive">
-			<div id="menu" class="main_name">
+			<div class="main_name">
 				<a href="index.php">MD&MTC</a>
 			</div>
 			<div class="menu">
@@ -69,54 +74,17 @@
 </header>
 
 <?php  
-	echo file_get_contents("resources/carousel.html");
+	print_carousel();
 ?>
 
 <div class="main-container">
 	<main>	
-	<ul style="list-style-type: none">
-<?php
-$result = $db->query("SELECT track.id, artists.name, track.title_track, albums.img_link, count(id_user) from `artists` join `track` on artists.id = track.id_artist left outer join `albums` on albums.id_track = track.id left outer join voted_list_track on track.id = voted_list_track.id_track group by track.id, artists.name, track.title_track, albums.img_link order by 5 DESC;") or die("mysql_error");	
-
-	for($i = 0; $i < 10; $i = $i + 1) {
-		$row = $result->fetch_assoc();
-		if(is_null($row['img_link']))
-			$row['img_link'] = "http://localhost/tw/img/noalbum.png";
-		echo' <li>
-		<audio id="music'.$i.'">
-			<source src="http://localhost/tw/music/'.$row["title_track"].'.mp3" type="audio/mpeg">
-		</audio>
-		<div class="main-player">
-			<div class="album-image" style="background-image: url('.$row["img_link"].')">
-				<button id="mini-play'.$i.'" onclick="play('.$i.')" class="little-player play on"></button>
-				<button id="mini-pause'.$i.'" onclick="pause('.$i.')" class="little-player pause off"></button>
-			</div>
-			<div class="track-link">
-				<p class="marquee resp"><span><a onclick="redirect(`'.$row["name"].'`)" id = "player_name_track'.$i.'">'.$row["name"].' - '.$row["title_track"].'</a></span></p>
-				<a onclick="redirect(`'.$row["name"].'`)" id = "player_name_track'.$i.'" class="noneresp">'.$row["name"].' - '.$row["title_track"].'</a>
-			</div>';
-
-		if(isset($_SESSION['email'])) {
-			echo '<div class="add"><button onclick="mini_menu('.$i.')" class="add-button"></button></div>
-				<div id="mini-menu'.$i.'" class="mini-menu">
-					<ul style="list-style-type: none">';
-
-			$id_track = $db->query('SELECT * from `track` where `title_track` = "'.$row['title_track'].'"')->fetch_assoc()['id'];
-			if($db->query("SELECT count(*) from `track_list` where `id_track` = '".$id_track."' and `id_user` = '".$_SESSION['id']."'")->fetch_assoc()['count(*)'] == 0)
-				echo '<li><a id="add_or_remove_a'.$i.'" onclick="add_track(`'.$row['title_track'].'`, `'.$i.'`)">Add</a></li>';
-			else
-				echo '<li><a id="add_or_remove_a'.$i.'" onclick="add_track(`'.$row['title_track'].'`, `'.$i.'`)">Remove</a></li>';
-			
-			if($db->query("SELECT count(*) from `voted_list_track` where `id_track` = '".$id_track."' and `id_user` = '".$_SESSION['id']."'")->fetch_assoc()['count(*)'] == 0)
-				echo '<li><a id="vote_a'.$i.'" onclick="vote_track(`'.$row['title_track'].'`, `'.$i.'`)">Vote</a></li>';
-			else
-				echo '<li><a id="vote_a'.$i.'" onclick="vote_track(`'.$row['title_track'].'`, `'.$i.'`)">Unvote</a></li>';
-			echo'</ul></div></div></li>';
-		}
-	}
-	$db->close();
-?>
+	<ul id = "ul_player_list" style="list-style-type: none">
+	<?php
+		print_tracks($page); 
+	 ?>
 	</ul>
+	<div class="more_comm"><a onclick="get_new_tracks()">Another tracks</a></div>
 	</main>
 </div>
 
@@ -125,3 +93,5 @@ $result = $db->query("SELECT track.id, artists.name, track.title_track, albums.i
 ?>
 </body>
 </html>
+
+
