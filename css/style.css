@@ -411,11 +411,8 @@ footer {
 		position: relative;
 		left:0%;
 	}
-}
-
-@media screen and (max-width: 915px) {
-
-	.nonresponsive {display: none;}
+		.nonresponsive {display: none;}
+	
 	main {
 		padding-left: 0px;
 	    padding-right: 0px;
@@ -441,7 +438,7 @@ footer {
 	.text-on {
 		display: block;
 		margin-top:60px;
-		margin-right: 40px;
+		margin-right: 20px;
 		text-align:right;
 	}
 
@@ -489,6 +486,7 @@ footer {
 		top:-70%;
 	}
 }
+
 	
 @media screen and (max-width: 550px) {
 	main {
@@ -519,6 +517,9 @@ footer {
 	.mini-menu {
 		left:65%;
 		top:-60%;
+	}
+	p {
+		font-size:10px;
 	}
 }
 @media screen and (max-width: 350px) {

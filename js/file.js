@@ -24,13 +24,14 @@ function download(text, name) {
 	a.download = name;
 }
 
-function get_file() {
+function get_file(email) {
 	$.ajax({
 	    url: 'export.php',
 	    type: 'GET',
 	    async: false,
+	    data : {'email' : email},
 	    success: function(response){
-	    	download(response, "my_playlist");
+	    	download(response, "playlist");
 	    }
 	});
 }

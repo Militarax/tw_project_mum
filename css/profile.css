@@ -93,6 +93,72 @@ main {
 	left:75%;
 }
 
+.comment-container {
+	clear:both;
+	margin:50px;
+	padding:20px;
+	background-color: black;
+}
+
+.comm-and-input {
+	width:100%;
+}
+
+.comm-and-input form{
+	border: 1px solid #ccc;
+	padding: 10px;
+	background-color: #1e1e1e;
+}
+
+textarea{
+	width: 100%;
+	height: 50px;
+	border: 0px;
+	resize: vertical;
+}
+
+form div {
+	text-align:right;
+}
+
+form button {
+	background-color: black;
+	color:white;
+	margin-top:10px;
+	padding:10px;
+	padding-right:30px;
+	padding-left: 30px;
+}
+
+.comm-and-input ul{
+	margin-top:20px;
+	list-style-type: none;
+	color:white;
+}
+
+.comm-and-input li {
+	margin:20px;
+	background-color: #1e1e1e;
+	border: 1px solid #ccc;
+}
+
+p {
+	margin:5px;
+}
+.comment div {
+	margin:5px;
+}
+
+.more_comm {
+	margin-right:25px;
+	text-align: right;
+}
+
+.more_comm a {
+	cursor: pointer;
+	padding:10px;
+	border:1px solid white;
+}
 @media screen and (max-width: 1130px) {
 	main {
 		grid-template-columns: auto 520px auto;

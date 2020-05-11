@@ -33,64 +33,58 @@
 </head>
 <body>
 	<header>
-		<nav>
-			<div class="nonresponsive">
-				<div class="left">
-					<a href="index.php">main page</a>
-					<a href="albums.php">albums</a>
-				</div>
-				<div class="center">
-					<a href="index.php">MD&MTC</a>
-				</div>
-				<div class="right">
-
-
-					<?php
-						if(!isset($_SESSION['email'])) {
-							echo '<a href="register.php">registration</a>
-								<a href="login.php">login</a>';
-							}
-						else {
-							echo '<a href="profile.php">Profile</a>
-							<a href="logout.php">logout</a>';
-						}
-					 ?>
-
-
-
-				</div>
+	<nav>
+		<div class="nonresponsive">
+			<div class="left">
+				<a href="index.php">main page</a>
+				<a href="albums.php">albums</a>
 			</div>
-			<div class="responsive">
-				<div id="menu" class="main_name">
-					<a href="index.php">MD&MTC</a>
-				</div>
-				<div class="menu">
-					<a href="javascript:void(0);"  onclick="NavBarResponsivity()">Menu</a>
-				</div>
-				<div id="text" class="text-off">
-					<ul>
-						<li><a href="index.php">main page</a></li>
-						<li><a href="albums.php">albums</a></li>
-
-
-						<?php
-							if(!isset($_SESSION['email'])) {
-								echo '<li><a href="register.php">registration</a></li>
-							<li><a href="login.php">login</a></li>';
-								}
-							else {
-								echo '<li><a href="profile.php">profile</a></li>
-								<li><a href="logout.php">logout</a></li>';
-							}
-						 ?>
-
-
-
-					</ul>
-				</div>
+			<div class="center">
+				<a href="index.php">MD&MTC</a>
 			</div>
-		</nav>
-	</header>
+			<div class="right">
+<?php
+	if(!isset($_SESSION['email'])) {
+		echo '
+				<a href="register.php">registration</a>
+				<a href="login.php">login</a>';
+	}
+	else {
+		echo '<a href="feed.php">News</a>
+				<a href="profile.php">Profile</a>
+				<a href="logout.php">logout</a>';
+	}
+?>
+					 
+			</div>
+		</div>
+		<div class="responsive">
+			<div class="main_name">
+				<a href="index.php">MD&MTC</a>
+			</div>
+			<div class="menu">
+				<a href="javascript:void(0);"  onclick="NavBarResponsivity()">Menu</a>
+			</div>
+			<div id="text" class="text-off">
+				<ul>
+					<li><a href="index.php">main page</a></li>
+					<li><a href="albums.php">albums</a></li>
+<?php
+	if(!isset($_SESSION['email'])) {
+		echo '<li><a href="register.php">registration</a></li>
+			<li><a href="login.php">login</a></li>';
+	}
+	else {
+		echo '<li><a href="feed.php">news</a></li>
+				<li><a href="profile.php">profile</a></li>
+				<li><a href="logout.php">logout</a></li>';
+	}
+?>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</header>
 
 
 <div class="main-container">
@@ -100,13 +94,15 @@
 <?php
 echo '
 <div id="img">	<img src="'.$artist_row['img_link'].'" alt="">
-</div>
-<p>'.$artist_row['name'].'</p>
-<p>'.$artist_row['real_name'].'</p>
-<p>'.$artist_row['genre'].'</p>
-<p>Born '.$artist_row['born'].'</p>';
-
-
+</div>';
+		if(isset($artist_row['name']))
+			echo '<p>'.$artist_row['name'].'</p>';
+		if(isset($artist_row['real_name']) and strlen($artist_row['real_name']) != 0)	
+			echo '<p>'.$artist_row['real_name'].'</p>';
+		if(isset($artist_row['genre']) and strlen($artist_row['genre']) != 0)		
+			echo '<p>'.$artist_row['genre'].'</p>';
+		if(isset($artist_row['born']) and strlen($artist_row['born']) != 0)		
+			echo '<p>Born '.$artist_row['born'].'</p>';
 
 $result = $db->query("SELECT * from `track` left outer join `albums` on albums.id_track = track.id where track.id_artist = '".$artist_row['id']."'") or die("mysql_error");	
 $rows = $result->num_rows >= 3 ? 3 : $result->num_rows;
@@ -146,7 +142,7 @@ for($i = 0; $i < $rows; $i = $i + 1) {
 		}
 		echo '</div>';
 	}
-
+echo "<div id='more-tracks'><a href='#'>Want more!</a></div>";
 
 echo '</div>
 	<div class="bio">
@@ -161,7 +157,7 @@ echo '</div>
 		<?php	
 			if(isset($_SESSION['email'])) {
 				echo '
-					<form method="post" action="send_comment.php">
+					<form method="post" action="send_comment_to_artist.php">
 						<textarea name="comment" placeholder="Write your comment" required=""></textarea>
 						<input style="display:none"name="id" value="'.$artist_row['id'].'">
 						<div><button type="submit" value="Submit">Submit</button></div>
@@ -170,12 +166,12 @@ echo '</div>
 		?>	
 						<ul>
 						<?php  
-							$result = $db->query("SELECT * FROM `artistcomments` join `users` on artistcomments.id_user = users.id where id_artist = ".$artist_row['id']." order by 5 desc") or die("mysql_error");
-							$rows = $result->num_rows >= 15 ? 15 : $result->num_rows;
+							$result = $db->query("SELECT * FROM `artistcomments` join `users` on artistcomments.id_user = users.id where id_artist = ".$artist_row['id']." order by 5 desc limit 0, 15") or die("mysql_error");
+							$rows = $result->num_rows;
 							if ($rows != 0) {
 								for($i = 0; $i < $rows; $i = $i + 1) {
 									$row = $result->fetch_assoc();
-									echo '<li><div class="comment"><p>User: '.$row['email'].'</p><p>Date: '.$row['date'].'</p><hr><p>Comment: '.$row['comment'].'</p></div></li>';
+									echo '<li><div class="comment"><p>User: <a href ="profile.php?email='.$row['email'].'">'.$row['email'].'</a></p><p>Date: '.$row['date'].'</p><hr><p>Comment: '.$row['comment'].'</p></div></li>';
 								}
 							}
 							else
@@ -184,8 +180,8 @@ echo '</div>
 						if ($rows > 15)
 							echo '<div class="more_comm"><a>More comments</a></div>';
 						?>
-					</div>
-				</div>
+		</div>
+	</div>
 				
 			
 	<?php
