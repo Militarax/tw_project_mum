@@ -167,7 +167,7 @@
 		?>	
 						<ul>
 						<?php  
-							$result = $db->query("SELECT * FROM `artistcomments` join `users` on artistcomments.id_user = users.id where id_artist = ".$artist_row['id']." order by 5 desc") or die("mysql_error");
+							$result = $db->query("SELECT * FROM `albumcomments` join `users` on albumcomments.id_user = users.id where id_album = ".$album_row['id']." order by 5 desc") or die("mysql_error");
 							$rows = $result->num_rows >= 15 ? 15 : $result->num_rows;
 							if ($rows != 0) {
 								for($i = 0; $i < $rows; $i = $i + 1) {
