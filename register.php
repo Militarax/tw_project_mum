@@ -4,9 +4,9 @@
 		header('Location: /tw/index.php');
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
 <head>
-	<title></title>
+	<title>MD&MTC</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
@@ -53,13 +53,13 @@
 	    <h1>Register</h1>	
 	    <hr>
 	    <label for="email"><b>Email</b></label>
-	    <input type="email" placeholder="Enter Email" name="email" required>
+	    <input id="email" type="email" placeholder="Enter Email" name="email" required>
 
 	    <label for="password"><b>Password</b></label>
-	    <input type="password" placeholder="Enter Password" name="password" minlength="6" maxlength="128" required>
+	    <input id="password" type="password" placeholder="Enter Password" name="password" minlength="6" maxlength="128" required>
 
 	    <label for="password2"><b>Repeat Password</b></label>
-	    <input type="password" placeholder="Repeat Password" name="password2" minlength="6" maxlength="128" required>
+	    <input id="password2" type="password" placeholder="Repeat Password" name="password2" minlength="6" maxlength="128" required>
 	    <hr>
 
 	    <button type="submit" class="registerbtn">Register</button>

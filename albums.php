@@ -2,10 +2,6 @@
 	session_start();
 	include 'print_albums.php';
 	$_SESSION['prev_page'] = "albums.php";
-	if (!isset($_GET['page']))
-		$page = 1;
-	else
-		$page = $_GET['page'];
  ?>
 
 <!DOCTYPE html>
@@ -17,16 +13,11 @@
 	<link>
 	<link rel="stylesheet" type="text/css" href="css/style2.css">
 	<title>MD&MTC</title>
-	<script type="text/javascript">
-		function NavBarResponsivity() {
-			var x = document.getElementById("text");
-			if (x.className === "text-off") {
-				x.className = "text-on";
-			} else {
-				x.className = "text-off";
-			}
-		}
+	<script src="js/scripts.js">
 	</script>
+	<script src="js/player.js">
+	</script>
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 </head>
 
 <body>
@@ -43,19 +34,21 @@
 			<div class="right">
 <?php
 	if(!isset($_SESSION['email'])) {
-		echo '<a href="register.php">registration</a>
+		echo '
+				<a href="register.php">registration</a>
 				<a href="login.php">login</a>';
 	}
 	else {
-		echo '<a href="profile.php">Profile</a>
-			<a href="logout.php">logout</a>';
+		echo '<a href="feed.php">News</a>
+				<a href="profile.php">Profile</a>
+				<a href="logout.php">logout</a>';
 	}
 ?>
 					 
 			</div>
 		</div>
 		<div class="responsive">
-			<div id="menu" class="main_name">
+			<div class="main_name">
 				<a href="index.php">MD&MTC</a>
 			</div>
 			<div class="menu">
@@ -71,8 +64,9 @@
 			<li><a href="login.php">login</a></li>';
 	}
 	else {
-		echo '<li><a href="profile.php">profile</a></li>
-		<li><a href="logout.php">logout</a></li>';
+		echo '<li><a href="feed.php">news</a></li>
+				<li><a href="profile.php">profile</a></li>
+				<li><a href="logout.php">logout</a></li>';
 	}
 ?>
 				</ul>
@@ -80,61 +74,19 @@
 		</div>
 	</nav>
 </header>
+
+<main>
+	<h2 class="music-section-title">Music tags</h2>
 <section class="music-section-type">
-			<h2 class="music-section-title">Music tags
-
-			</h2>
+			
 			<ul class="music-tags">
-				<div class="music-tag"
-					style="background-image: url('https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');">
-					<div class="music-tag-link" href="index.html">
-						<a href="rockpage.html"></a>
-					</div>
-				</div>
 
-				<div class="music-tag"
-					style="background-image: url('https://images.pexels.com/photos/164936/pexels-photo-164936.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');">
-					<div class="music-tag-link" href="index.html">
-						<a href="index.html"></a>
-					</div>
-				</div>
-				<div class="music-tag"
-					style="background-image: url('https://images.pexels.com/photos/219101/pexels-photo-219101.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');">
-					<div class="music-tag-link" href="index.html">
-						<a href="index.html"></a>
-					</div>
-				</div>
-				<div class="music-tag"
-					style="background-image: url('https://images.pexels.com/photos/759832/pexels-photo-759832.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');">
-					<div class="music-tag-link" href="index.html">
-						<a href="index.html"></a>
-					</div>
-				</div>
-				<div class="music-tag"
-					style="background-image: url('https://images.pexels.com/photos/210854/pexels-photo-210854.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');">
-					<div class="music-tag-link" href="index.html">
-						<a href="index.html"></a>
-					</div>
-				</div>
-				<div class="music-tag" style="background-image: url(img6.jpg);"></div>
+				<?php 
+					print_albums(0);
+				 ?>
 			</ul>
-
-
-
 		</section>
-
-
-	<div class="main-container">
-	<main>	
-	<ul style="list-style-type: none">
-<?php
-print_albums($page); 
-?>
-	</ul>
-	</main>
-</div>
-
-
+</main>
 </body>
 
 </html>

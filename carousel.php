@@ -11,9 +11,9 @@
 			<div class="carousel">
 				<a class="left-button" onclick="left_button_image()"><b>&lt;</b></a>
 				<div class="images">
-					<a href = "#"><img id="fimg" src="'.$first['img_link'].'" alt=""></a>
-					<a href = "#"><img id="timg" src="'.$second['img_link'].'" alt=""></a>
-					<a href = "#"><img id="simg" src="'.$third['img_link'].'" alt=""></a>
+					<a href = "single_album.php?name='.$first['album_title'].'"><img id="fimg" src="'.$first['img_link'].'" alt=""></a>
+					<a href = "single_album.php?name='.$second['album_title'].'"><img id="timg" src="'.$second['img_link'].'" alt=""></a>
+					<a href = "single_album.php?name='.$third['album_title'].'"><img id="simg" src="'.$third['img_link'].'" alt=""></a>
 				</div>	
 				<a class="right-button" onclick="right_button_image()"><b>&gt;</b></a>
 			</div>

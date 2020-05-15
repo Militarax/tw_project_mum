@@ -7,8 +7,9 @@
 	
 
 	$email = $_POST['email'];
-	$password = trim($_POST['password']);
-	$password2 = trim($_POST['password2']);
+	$form_password = trim($_POST['password']);
+	$form_password2 = trim($_POST['password2']);
+	echo $password;
 	$db = mysqli_connect($host, $user, $password, $database) or die("Error" . mysqli_error($db));
 	$exists = null;
 
@@ -16,7 +17,7 @@
     	$exists = $db->query("select * from `users` where email = '$email'")->fetch_assoc();
     	if (empty($exists)) {
 	    	if(validate($password) == 0 && strlen(password) >= 6) {
-				$db->query("INSERT INTO `users`(`email`, `password`) VALUES ('$email', md5('$password'))") or die("mysql_error");
+				$db->query("INSERT INTO `users`(`email`, `password`) VALUES ('$email', md5('$form_password'))") or die("mysql_error");
 		    	header("Location: /tw/login.php");
 	    	}
 	    	else 

@@ -12,17 +12,18 @@
 	$album_row = $result->fetch_assoc();
 	
 	if(!isset($_GET['name']) || $result->num_rows == 0) {
-		header('location: /tw/albums.php');
+		header('location: /tw/index.php');
 	}
-	$_SESSION['prev_page'] = "albums.php?name=".$_GET['name'];
+	$_SESSION['prev_page'] = "single_album.php?name=".$_GET['name'];
  ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="css/album_style.css">
+	<link rel="stylesheet" type="text/css" href="css/comments.css">
 	<title>MD&MTC</title>
 	<script src="js/scripts.js">
 	</script>
@@ -31,68 +32,59 @@
 	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 </head>
 <body>
-	<header>
-		<nav>
-			<div class="nonresponsive">
-				<div class="left">
-					<a href="index.php">main page</a>
-					<a href="albums.php">albums</a>
-				</div>
-				<div class="center">
-					<a href="index.php">MD&MTC</a>
-				</div>
-				<div class="right">
-
-
-					<?php
-						if(!isset($_SESSION['email'])) {
-							echo '<a href="register.php">registration</a>
-								<a href="login.php">login</a>';
-							}
-						else {
-							echo '<a href="profile.php">Profile</a>
-							<a href="logout.php">logout</a>';
-						}
-					 ?>
-
-
-
-				</div>
+<header>
+	<nav>
+		<div class="nonresponsive">
+			<div class="left">
+				<a href="index.php">main page</a>
+				<a href="albums.php">albums</a>
 			</div>
-			<div class="responsive">
-				<div id="menu" class="main_name">
-					<a href="index.php">MD&MTC</a>
-				</div>
-				<div class="menu">
-					<a href="javascript:void(0);"  onclick="NavBarResponsivity()">Menu</a>
-				</div>
-				<div id="text" class="text-off">
-					<ul>
-						<li><a href="index.php">main page</a></li>
-						<li><a href="albums.php">albums</a></li>
-
-
-						<?php
-							if(!isset($_SESSION['email'])) {
-								echo '<li><a href="register.php">registration</a></li>
-							<li><a href="login.php">login</a></li>';
-								}
-							else {
-								echo '<li><a href="profile.php">profile</a></li>
-								<li><a href="logout.php">logout</a></li>';
-							}
-						 ?>
-
-
-
-					</ul>
-				</div>
+			<div class="center">
+				<a href="index.php">MD&MTC</a>
 			</div>
-		</nav>
-
-
-	</header>
-
+			<div class="right">
+<?php
+	if(!isset($_SESSION['email'])) {
+		echo '
+				<a href="register.php">registration</a>
+				<a href="login.php">login</a>';
+	}
+	else {
+		echo '<a href="feed.php">News</a>
+				<a href="profile.php">Profile</a>
+				<a href="logout.php">logout</a>';
+	}
+?>
+					 
+			</div>
+		</div>
+		<div class="responsive">
+			<div class="main_name">
+				<a href="index.php">MD&MTC</a>
+			</div>
+			<div class="menu">
+				<a href="javascript:void(0);"  onclick="NavBarResponsivity()">Menu</a>
+			</div>
+			<div id="text" class="text-off">
+				<ul>
+					<li><a href="index.php">main page</a></li>
+					<li><a href="albums.php">albums</a></li>
+<?php
+	if(!isset($_SESSION['email'])) {
+		echo '<li><a href="register.php">registration</a></li>
+			<li><a href="login.php">login</a></li>';
+	}
+	else {
+		echo '<li><a href="feed.php">news</a></li>
+				<li><a href="profile.php">profile</a></li>
+				<li><a href="logout.php">logout</a></li>';
+	}
+?>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</header>
 
 
 
@@ -107,7 +99,7 @@
 
 	<ul id = "ul_player_list" style="list-style-type: none">
 	<?php
-		$result = $db->query("SELECT track.id, artists.name, track.title_track, albums.img_link, count(id_user) from `artists` join `track` on artists.id = track.id_artist left outer join `albums` on albums.id_track = track.id left outer join voted_list_track on track.id = voted_list_track.id_track where albums.album_title = '".$album_row['album_title']."' group by track.id, artists.name, track.title_track, albums.img_link ") or die("mysql_error");	
+		$result = $db->query("SELECT track.id, artists.name, track.title_track, albums.img_link, albums.album_title from `artists` join `track` on artists.id = track.id_artist left outer join `albums` on albums.id_track = track.id left outer join voted_list_track on track.id = voted_list_track.id_track where albums.album_title = '".$album_row['album_title']."' group by track.id, artists.name, track.title_track, albums.img_link, albums.album_title") or die("mysql_error");	
 
 		for($i = 0; $i < $result->num_rows; $i = $i + 1) {
 			$row = $result->fetch_assoc();
@@ -115,7 +107,7 @@
 				$row['img_link'] = "http://localhost/tw/img/noalbum.png";
 			echo' <li>
 			<audio id="music'.$i.'">
-				<source src="http://localhost/tw/music/'.$row["title_track"].'.mp3" type="audio/mpeg">
+				<source src="http://localhost/tw/music/'.str_replace(' ', '%20', $row["title_track"]).'.mp3" type="audio/mpeg">
 			</audio>
 			<div class="main-player">
 				<div class="album-image" style="background-image: url('.$row["img_link"].')">
@@ -124,7 +116,7 @@
 				</div>
 				<div class="track-link">
 					<p class="marquee resp"><span><a onclick="redirect_to_artist(`'.$row["name"].'`)" id = "player_name_track'.$i.'">'.$row["name"].' - '.$row["title_track"].'</a></span></p>
-					<a onclick="redirect_to_artist(`'.$row["name"].'`)" id = "player_name_track'.$i.'" class="noneresp">'.$row["name"].' - '.$row["title_track"].'</a>
+					<a onclick="redirect_to_artist(`'.$row["name"].'`)" class="noneresp">'.$row["name"].' - '.$row["title_track"].'</a>
 				</div>';
 
 			if(isset($_SESSION['email'])) {
@@ -158,21 +150,25 @@
 		<?php	
 			if(isset($_SESSION['email'])) {
 				echo '
-					<form method="post" action="send_comment.php">
+					<form method="post" action="send_comment_to_album.php">
 						<textarea name="comment" placeholder="Write your comment" required=""></textarea>
-						<input style="display:none"name="id" value="'.$artist_row['id'].'">
+						<input style="display:none" name="title" value="'.$row['album_title'].'">
 						<div><button type="submit" value="Submit">Submit</button></div>
 					</form>	';
 					}
 		?>	
 						<ul>
 						<?php  
-							$result = $db->query("SELECT * FROM `albumcomments` join `users` on albumcomments.id_user = users.id where id_album = ".$album_row['id']." order by 5 desc") or die("mysql_error");
+							$result = $db->query("SELECT albumcomments.id, albumcomments.date, albumcomments.comment, albumcomments.id_user, users.email FROM `albumcomments` join `users` on albumcomments.id_user = users.id where album_title = '".$row['album_title']."' order by 5 desc") or die("mysql_error");
 							$rows = $result->num_rows >= 15 ? 15 : $result->num_rows;
 							if ($rows != 0) {
 								for($i = 0; $i < $rows; $i = $i + 1) {
 									$row = $result->fetch_assoc();
-									echo '<li><div class="comment"><p>User: '.$row['email'].'</p><p>Date: '.$row['date'].'</p><hr><p>Comment: '.$row['comment'].'</p></div></li>';
+									echo '<li><div class="user_comment"><p>User: <a href ="profile.php?email='.$row['email'].'">'.$row['email'].'</a></p><p>Date: '.$row['date'].'</p><hr><div class="text_comment"><p>Comment: '.$row['comment'].'</p></div>';
+										if(isset($_SESSION['admin']) and $_SESSION['admin'] == 1)
+											echo '<hr><div class="delete_div"><a href="delete_album_comment.php?id='.$row['id'].'" class ="delete_button">Delete comment</a></div></div></li>';
+										else
+											echo '</div></li>';
 								}
 							}
 							else

@@ -102,10 +102,7 @@ nav {
 
 .center {
 	display: inline-block;
-	margin-top: 10px;
-	margin-left: 80px;
-	margin-right: 80px;
-	margin-bottom: 10px;
+	margin: 10px 40px 10px 80px;
 }
 
 main {
@@ -256,6 +253,12 @@ footer {
 	background-color: white;
 	color:black;
 }
+
+p {
+	word-wrap: break-word;
+	margin:5px;
+}
+
 
 .play {
 	background-image: url("https://i3.ru-music.com/i/img/fixplayer.png");

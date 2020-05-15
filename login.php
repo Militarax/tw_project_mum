@@ -4,9 +4,9 @@
 		header('Location: /tw/index.php');
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
 <head>
-	<title>Login</title>
+	<title>MD&MTC</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
@@ -50,10 +50,10 @@
 	  <form action="login_proccesing.php" class="form-container" method="POST">
 	    <h1>Login</h1>
 	    <label for="email"><b>Email</b></label>
-	    <input type="email" placeholder="Enter Email" name="email" required>
+	    <input id="email" type="email" placeholder="Enter Email" name="email" required>
 
 	    <label for="password"><b>Password</b></label>
-	    <input type="password" placeholder="Enter Password" name="password" minlength="6" maxlength="128" required>
+	    <input id="password" type="password" placeholder="Enter Password" name="password" minlength="6" maxlength="128" required>
 	    <button type="submit" class="btn">Login</button>
 	  </form>
 	</div>

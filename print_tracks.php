@@ -31,7 +31,7 @@
 				$row['img_link'] = "http://localhost/tw/img/noalbum.png";
 			echo' <li>
 			<audio id="music'.$i.'">
-				<source src="http://localhost/tw/music/'.$row["title_track"].'.mp3" type="audio/mpeg">
+				<source src="http://localhost/tw/music/'.str_replace(' ', '%20', $row["title_track"]).'.mp3" type="audio/mpeg">
 			</audio>
 			<div class="main-player">
 				<div class="album-image" style="background-image: url('.$row["img_link"].')">
@@ -40,7 +40,7 @@
 				</div>
 				<div class="track-link">
 					<p class="marquee resp"><span><a onclick="redirect_to_artist(`'.$row["name"].'`)" id = "player_name_track'.$i.'">'.$row["name"].' - '.$row["title_track"].'</a></span></p>
-					<a onclick="redirect_to_artist(`'.$row["name"].'`)" id = "player_name_track'.$i.'" class="noneresp">'.$row["name"].' - '.$row["title_track"].'</a>
+					<a onclick="redirect_to_artist(`'.$row["name"].'`)" class="noneresp">'.$row["name"].' - '.$row["title_track"].'</a>
 				</div>';
 
 			if(isset($_SESSION['email'])) {

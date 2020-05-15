@@ -18,12 +18,14 @@
  ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/artist.css">
+	<link rel="stylesheet" type="text/css" href="css/comments.css">
+	<title>MD&MTC</title>
 	<title>MD&MTC</title>
 	<script src="js/scripts.js">
 	</script>
@@ -111,7 +113,7 @@ for($i = 0; $i < $rows; $i = $i + 1) {
 	if(is_null($row['img_link']))
 		$row['img_link'] = "http://localhost/tw/img/noalbum.png";
 	echo'<audio id="music'.$i.'">
-			<source src="http://localhost/tw/music/'.$row["title_track"].'.mp3" type="audio/mpeg">
+			<source src="http://localhost/tw/music/'.str_replace(' ', '%20', $row["title_track"]).'.mp3" type="audio/mpeg">
 		</audio>
 			<div class="main-player">
 				<div class="album-image" style="background-image: url('.$row["img_link"].')">
@@ -144,49 +146,18 @@ for($i = 0; $i < $rows; $i = $i + 1) {
 	}
 echo "<div id='more-tracks'><a href='#'>Want more!</a></div>";
 
-echo '</div>
-	<div class="bio">
-		<h1>Biography</h1>
-			<p>'.$artist_row['wiki'].'</p>		
-	</div>
-</div>';
+	echo '</div>
+		<div class="bio">
+			<h1>Biography</h1>
+				<p>'.$artist_row['wiki'].'</p>		
+		</div>
+	</div>';
+	$db->close();
 ?>
 </div>
-	<div class="comment-container">
-				<div class="comm-and-input">
-		<?php	
-			if(isset($_SESSION['email'])) {
-				echo '
-					<form method="post" action="send_comment_to_artist.php">
-						<textarea name="comment" placeholder="Write your comment" required=""></textarea>
-						<input style="display:none"name="id" value="'.$artist_row['id'].'">
-						<div><button type="submit" value="Submit">Submit</button></div>
-					</form>	';
-					}
-		?>	
-						<ul>
-						<?php  
-							$result = $db->query("SELECT * FROM `artistcomments` join `users` on artistcomments.id_user = users.id where id_artist = ".$artist_row['id']." order by 5 desc limit 0, 15") or die("mysql_error");
-							$rows = $result->num_rows;
-							if ($rows != 0) {
-								for($i = 0; $i < $rows; $i = $i + 1) {
-									$row = $result->fetch_assoc();
-									echo '<li><div class="comment"><p>User: <a href ="profile.php?email='.$row['email'].'">'.$row['email'].'</a></p><p>Date: '.$row['date'].'</p><hr><p>Comment: '.$row['comment'].'</p></div></li>';
-								}
-							}
-							else
-								echo '<li><div class="comment"><p>No comments!</p></div></li>';
-						echo'</ul>';
-						if ($rows > 15)
-							echo '<div class="more_comm"><a>More comments</a></div>';
-						?>
-		</div>
-	</div>
-				
-			
 	<?php
+		include 'print_artist_comments.php';
 		echo file_get_contents("resources/player.html"); 
-			$db->close();
 	 ?>
 </body>
 </html>

@@ -19,12 +19,13 @@
  ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/profile.css">
+	<link rel="stylesheet" type="text/css" href="css/comments.css">
 	<title>MD&MTC</title>
 	<script src="js/scripts.js">
 	</script>
@@ -93,18 +94,18 @@
 		$row = $result->fetch_assoc();
 		if(is_null($row['img_link']))
 			$row['img_link'] = "http://localhost/tw/img/noalbum.png";
-		echo' <li>
-		<audio id="music'.$i.'" preload="true">
-			<source src="http://localhost/tw/music/'.$row["title_track"].'.mp3" type="audio/mpeg">
-		</audio>
-		<div class="main-player">
-			<div class="album-image" style="background-image: url('.$row["img_link"].')">
-				<button id="mini-play'.$i.'" onclick="play('.$i.')" class="little-player play on"></button>
-				<button id="mini-pause'.$i.'" onclick="pause('.$i.')" class="little-player pause off"></button>
-			</div>
-			<div class="track-link">
-				<p class="marquee resp"><span><a href="artist.php?name='.$row["name"].'" id = "player_name_track'.$i.'">'.$row["name"].' - '.$row["title_track"].'</a></span></p>
-			</div>';
+		echo '<li>
+			<audio id="music'.$i.'">
+				<source src="http://localhost/tw/music/'.str_replace(' ', '%20', $row["title_track"]).'.mp3" type="audio/mpeg">
+			</audio>
+			<div class="main-player">
+				<div class="album-image" style="background-image: url('.$row["img_link"].')">
+					<button id="mini-play'.$i.'" onclick="play('.$i.')" class="little-player play on"></button>
+					<button id="mini-pause'.$i.'" onclick="pause('.$i.')" class="little-player pause off"></button>
+				</div>
+				<div class="track-link">
+					<p class="marquee resp"><span><a href="artist.php?name='.$row["name"].'" id = "player_name_track'.$i.'">'.$row["name"].' - '.$row["title_track"].'</a></span></p>
+				</div>';
 
 		if(isset($_SESSION['email'])) {
 			echo '<div class="add-vote-div"><button onclick="mini_menu('.$i.')" class="add-button"></button></div>
@@ -155,12 +156,16 @@ echo '<div class="export"><h3><a id="export_a" onclick="get_file(`'.$email.'`)">
 		?>	
 						<ul>
 						<?php  
-							$result = $db->query("SELECT * FROM `personalcomments` join `users` on personalcomments.id_user_commented = users.id where owner = ".$current_page_user_id." order by 5 desc limit 0, 15") or die("mysql_error");
+							$result = $db->query("SELECT personalcomments.id, personalcomments.owner, personalcomments.id_user_commented, personalcomments.comment, personalcomments.date, users.email FROM `personalcomments` join `users` on personalcomments.id_user_commented = users.id where owner = ".$current_page_user_id." order by 5 desc limit 0, 15") or die("mysql_error");
 							$rows = $result->num_rows;
 							if ($rows != 0) {
 								for($i = 0; $i < $rows; $i = $i + 1) {
 									$row = $result->fetch_assoc();
-									echo '<li><div class="comment"><p>User: <a href ="profile.php?email='.$row['email'].'">'.$row['email'].'</a></p><p>Date: '.$row['date'].'</p><hr><p>Comment: '.$row['comment'].'</p></div></li>';
+									echo '<li><div class="user_comment"><p>User: <a href ="profile.php?email='.$row['email'].'">'.$row['email'].'</a></p><p>Date: '.$row['date'].'</p><hr><div class="text_comment"><p>Comment: '.$row['comment'].'</p></div>';
+									if(isset($_SESSION['admin']) and $_SESSION['admin'] == 1)
+										echo '<hr><div class="delete_div"><a href="delete_anotherone_comment.php?id='.$row['id'].'" class ="delete_button">Delete comment</a></div></div></li>';
+									else
+										echo '</div></li>';
 								}
 							}
 							else

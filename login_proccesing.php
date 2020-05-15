@@ -14,6 +14,7 @@
 		session_start();
 		$_SESSION['email'] = $user_email;
 		$_SESSION['id'] = $row['id'];
+		$_SESSION['admin'] = $row['admin'];
 		header('Location: /tw/index.php');
 	}
 ?>
