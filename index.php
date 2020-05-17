@@ -40,8 +40,8 @@
 				<a href="login.php">login</a>';
 	}
 	else {
-		echo '<a href="feed.php">News</a>
-				<a href="profile.php">Profile</a>
+		echo '<a href="feed.php">news</a>
+				<a href="profile.php">profile</a>
 				<a href="logout.php">logout</a>';
 	}
 ?>

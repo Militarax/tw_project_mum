@@ -76,7 +76,7 @@
 </header>
 
 <main>
-	<h2 class="music-section-title">Music tags</h2>
+	<h2 class="music-section-title">Albums</h2>
 <section class="music-section-type">
 			
 			<ul class="music-tags">

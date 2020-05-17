@@ -52,8 +52,8 @@
 				<a href="login.php">login</a>';
 	}
 	else {
-		echo '<a href="feed.php">News</a>
-				<a href="profile.php">Profile</a>
+		echo '<a href="feed.php">news</a>
+				<a href="profile.php">profile</a>
 				<a href="logout.php">logout</a>';
 	}
 ?>
@@ -140,6 +140,7 @@ for($i = 0; $i < $rows; $i = $i + 1) {
 				echo '<li><a id="vote_a'.$i.'" onclick="vote_track(`'.$row['title_track'].'`, `'.$i.'`)">Vote</a></li>';
 			else
 				echo '<li><a id="vote_a'.$i.'" onclick="vote_track(`'.$row['title_track'].'`, `'.$i.'`)">Unvote</a></li>';
+			echo '<li><a href="comment_a_play.php?id='.$row['id'].'">Comment</a></li>';
 			echo'</ul></div>';
 		}
 		echo '</div>';

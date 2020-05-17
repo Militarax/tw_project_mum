@@ -150,7 +150,7 @@ p {
 		top:-150%;
 		z-index:10;
 	}
-	.add {
+	.add-vote-div {
 		top:-25%;
 		left: 40%;
 	}
@@ -170,7 +170,18 @@ p {
 	.main-player {
 		width:300px;
 	}
+	.resp {
+		width: 100px;
+	}
+	.track-link {
+		left: 5%;
+	}
 
+}
+@media screen and (max-width: 550px) {
+	.add-vote-div {
+		top:-10%;
+	}
 }
 
 @media screen and (max-width: 440px) {
@@ -186,14 +197,12 @@ p {
 	.track-link {
 		display: none;
 	}
-	.add {
-		position: relative;
-		top:0%;
-		left:0%;
+	.add-vote-div {
+		top:10%;
+		right:-10%;
 	}
-	.add-button {
-		position: relative;
-		left:100%;
-		top:-125%;
+	.mini-menu {
+		top:-100%;
+		left:30%;
 	}
 }

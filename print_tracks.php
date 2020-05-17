@@ -58,6 +58,7 @@
 					echo '<li><a id="vote_a'.$i.'" onclick="vote_track(`'.$row['title_track'].'`, `'.$i.'`)">Vote</a></li>';
 				else
 					echo '<li><a id="vote_a'.$i.'" onclick="vote_track(`'.$row['title_track'].'`, `'.$i.'`)">Unvote</a></li>';
+				echo '<li><a href="comment_a_play.php?id='.$row['id'].'">Comment</a></li>';
 				echo'</ul></div>';
 			}
 			echo '</div></li>';
