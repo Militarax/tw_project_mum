@@ -26,7 +26,6 @@
 	<link rel="stylesheet" type="text/css" href="css/artist.css">
 	<link rel="stylesheet" type="text/css" href="css/comments.css">
 	<title>MD&MTC</title>
-	<title>MD&MTC</title>
 	<script src="js/scripts.js">
 	</script>
 	<script src="js/player.js">
