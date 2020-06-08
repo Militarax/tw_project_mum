@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <title>MuM</title>
+    <link href="Sch.css" type="text/css" rel="stylesheet">
+    <meta charset="utf-8">
+</head>
+
+<body>
+<article>
+    <header><h1>Raport - Music Review Manager</h1></header>
+    <div role="contentinfo">
+        <ol role="directory">
+            <li><a href="#abstract">Abstract</a></li>
+            <li><a href="#introducere">Descriere</a></li>
+            <li><a href="#module">Componente</a></li>
+            <ol role="directory">
+                <li><a href="#loginRegister">Login/Register</a></li>
+                <li><a href="#Statistica">Statistica</a></li>
+                <li><a href="#Artist">Artist</a></li>
+                <li><a href="#Album">Album</a></li>
+                <li><a href="#RSS">RSS</a></li>
+                <li><a href="#Comentarii">Comentarii</a></li>
+                <li><a href="#Export">Exportare/Importare</a></li>
+            </ol>
+            <li><a href="#tehnologii">Tehnologii folosite</a></li>
+            <li><a href="#detalii">Detalii de inmplementare</a></li>
+            <li><a href="#progres">Progresul proiectului</a></li>
+            <li><a href="#git">Sistem management cod sursa</a></li>
+            <li><a href="#bibliografie">Referinte</a></li>
+        </ol>
+        <dt>Authors</dt>
+        <dd>
+            <ul>
+                <li>Dațco Maxim</li>
+                <li>Miron Teodor-Cosmin</li>
+            </ul>
+        </dd>
+    </div>
+
+    <section id="abstract" typeof="sa:Abstract" role="doc-abstract">
+        <h2>1. Abstract</h2>
+        <p>Music Review Manager este o aplicatie web care permite specificarea adnotarilor textuale si a meta-datelor , exprimarea opiniilor vizand auditiile muzicale realizate de o persoana sau grup de persoane.
+        </p>
+    </section>
+
+    <section id="introducere" role="doc-introduction">
+        <h2>2. Descriere</h2>
+        <p>
+            Aplicatia va realiza managementul productiilor muzicale, inclusiv organizarea lor pe diverse criterii.
+            Dupa autentificare utilizatorul isi poate exprima opinia vizand auditiile muzicale realizate de o persoana sau grup de persoane.
+            Se vor ofera statistici diverse ce pot fi exportate in formate deschise – minimal, CSV si PDF.
+            Diversele anunturi (o persoana a comentat un album muzical, a aparut o alta compilatie de interes, modificarea clasamentului celor mai apreciate cantece ale lunii etc.) vor fi expuse ca flux de stiri RSS. 
+            Listele de melodii preferate vor fi importate/exportate in format JSPF/XSPF.
+        </p>
+    </section>
+
+    <section id="module">
+        <h2>3. Componente </h2>
+        <section id="loginRegister">
+            <h3>3.1 Login / Register</h3>
+            <p>Utilizatorii se vor putea autentifica sau inregistra. Logarea se face pe baza de email/parola.
+            </p>
+        
+        </section>
+        <section id="Statistica">
+            <h3>3.2 Statistica</h3>
+            <p>Utilizatorii pot descarca statistici in format csv si pdf.
+            </p>
+    </section>
+
+
+    <section id="Artist">
+        <h3>3.3 Artist</h3>
+            <p> Vizualizare date artist si melodiile acestuia.
+            </p>
+</section>
+
+<section id="Album">
+    <h3>3.4 Album</h3>
+            <p> Lista melodii album.
+            </p>
+</section>
+<section id="RSS">
+    <h3>3.5 RSS</h3>
+            <p> Vizualizare evenimente ce au avut loc.
+            </p>
+</section>
+<section id="Comentarii">
+    <h3>3.6 Comentarii</h3>
+            <p> Adaugarea comentariilor pentru un album,track.
+            </p>
+</section>
+<section id="Export">
+    <h3>3.7 Exportare/Importare</h3>
+            <p> Exportare/Importare unui playlist in format JSPF.
+            </p>
+</section>
+
+
+    <section id="tehnologii">
+        <h2>4. Tehnologii folosite</h2>
+        <p>Pentru front-end:</p>
+        <ul>
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JavaScript</li>
+        </ul>
+        <p>Pentru back-end: </p>
+        <ul>
+            <li>MySQL</li>
+            <li>JavaScript </li>
+            <li>PHP</li>
+        </ul>
+    </section>
+
+    <section id="detalii">
+        <h2>5. Detalii de implementare</h2>
+     
+        <section id="bd">
+            <h2>5.1 Baza de date</h2>
+            <p>
+                <ol>
+                    <li>
+                        Tabela users ( id, email, password(md5) ) contine toti userii registrati.
+                    </li>
+                    <li>
+                        Tabela tracks ( id, id_artist, title_track ) contine toate melodiile.
+                    </li>
+                    <li>
+                        Tabela artists ( id, name, wiki, real_name, born, genre, img_link ) contine toti artistii care au macar o melodie.
+                    </li>
+                    <li>
+                        Tabela albums ( id, album_title, id_track, id_artist, img_link ) contine toate albumelea unui artist.
+                    </li>
+                    <li>
+                        Tabela rss ( id, id_title, link, description, date ) retine toate evenimentele care au avut loc pe site.
+                    </li>
+                    <li>
+                        Tabela track_list ( id_user, id_track ) retine playlist-ul persoanei care este autentificata.
+                    </li>
+                    <li>
+                        Tabela (play/artist/album/personal)comments ( id, id_user, album_title, comment, date) contine toate commentariile despre o melodie/artist/album/user.
+                    </li>
+                </ol>
+            </p>
+
+        
+        </section>
+    </section>
+    <section id="progres">
+        <h2>6. Progresul proiectului</h2>
+        <p>
+            Dațco Maxim -> MainPage , Login/Register , ArtistPage , RSS , ProfilePage
+        </p>
+        <p>
+            Miron Teodor-Cosmin -> Albums , SingleAlbum , Statistics
+        </p>
+    </section>
+    <section id="git">
+        <h2>7. Sistem management cod sursa</h2>
+        <p>
+            Sistemul de management al codului sursa este github. A fost folosita aplicatia de desktop, toti
+             membri ai echipei fiind colaboratori si avand drepturi ridicate asupra proiectului,
+            push-urile fiind facute dupa consultarea cu ceilalti membri ai echipei.
+        </p>
+    </section>
+    <section id="bibliografie">
+        <h2>8. Referinte</h2>
+        <dl>
+            <dt id="ref-proiecte"></dt>
+            <dd property="schema:citation" typeof="schema:ScholarlyArticle">
+                <cite propery="schema:name"><a href="https://profs.info.uaic.ro/~busaco/teach/courses/web/web-film.html">https://profs.info.uaic.ro/~busaco/teach/courses/web/web-film.html </a></cite>
+            </dd>
+        </dl>
+    </section>
+</article>
+</body>
+
+</html>
